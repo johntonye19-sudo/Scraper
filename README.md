@@ -7,14 +7,14 @@ Here is your clean, text-focused `README.md` without the diagram.
 ```markdown
 # High-Throughput Async Web Scraping Engine
 
-A resilient, production-ready distributed web scraping architecture built with Python. Designed to seamlessly bypass modern anti-bot protections, extract data concurrently, process workloads via background queues, and persist items into PostgreSQL.
+A resilient, production-ready distributed web scraping architecture built with Python. Designed to seamlessly bypass modern anti-bot protections, extract data concurrently, process workloads via b[...]
 
 ---
 
 ## Key Features
 
 * **Hybrid Engine (`engine.py`):** 
-  * High-speed HTTP fetches via `curl_cffi` using TLS fingerprint spoofing (`impersonate="chrome120"`).
+  * High-speed HTTP fetches via `curl_cffi` using TLS fingerprint spoofing (`impersonate="chrome120").
   * Automatic fallback to headless Playwright browser automation with `playwright-stealth` for JavaScript-heavy targets.
   * Rapid C-based HTML parsing via `selectolax`.
 * **Distributed Task Queue (`tasks.py` & `producer.py`):** 
@@ -33,12 +33,15 @@ A resilient, production-ready distributed web scraping architecture built with P
 .
 ├── .gitignore          # Prevents tracking secrets, binaries, and virtual environments
 ├── README.md           # Documentation and pipeline architecture guide
-├── database.py         # SQLAlchemy ORM models and PostgreSQL connection pool
-├── engine.py           # ProductionScraper class (curl_cffi + Playwright + Selectolax)
-├── producer.py         # Job dispatcher pushing URL scraping tasks into Redis
-├── requirements.txt    # Python dependencies
-└── tasks.py            # arq worker definitions and execution handlers
-
+├── backend/            # Core Python backend package (workers, engine, db)
+│   ├── __init__.py
+│   ├── database.py     # SQLAlchemy ORM models and PostgreSQL connection pool
+│   ├── engine.py       # ProductionScraper class (curl_cffi + Playwright + Selectolax)
+│   ├── producer.py     # Job dispatcher pushing URL scraping tasks into Redis
+│   └── tasks.py        # arq worker definitions and execution handlers
+├── frontend/           # Optional frontend UI (placeholder)
+│   └── ScraperDashboard.jsx
+└── requirements.txt    # Python dependencies
 ```
 
 ---
@@ -53,8 +56,8 @@ A resilient, production-ready distributed web scraping architecture built with P
 ### 2. Clone Repository & Environment Setup
 
 ```bash
-git clone [https://github.com/your-username/your-repo-name.git](https://github.com/your-username/your-repo-name.git)
-cd your-repo-name
+git clone https://github.com/johntonye19-sudo/Scraper.git
+cd Scraper
 
 # Create and activate virtual environment
 python -m venv .venv
@@ -94,7 +97,7 @@ docker run -d --name postgres-server -p 5432:5432 \
 In Terminal 1, run the `arq` queue worker daemon:
 
 ```bash
-arq tasks.WorkerSettings
+arq backend.tasks.WorkerSettings
 
 ```
 
@@ -103,7 +106,7 @@ arq tasks.WorkerSettings
 In Terminal 2, execute the producer script to populate tasks into the queue:
 
 ```bash
-python producer.py
+python backend/producer.py
 
 ```
 
@@ -124,7 +127,7 @@ Example for running with custom environment variables:
 ```bash
 export DATABASE_URL="postgresql+asyncpg://user:password@remote-db-host:5432/production_db"
 export REDIS_HOST="redis-cluster.internal"
-python producer.py
+python backend/producer.py
 
 ```
 
@@ -132,15 +135,11 @@ python producer.py
 
 ## Verification & Error Handling
 
-* **Automatic Engine Fallback:** If a fast static fetch (`curl_cffi`) returns an HTTP block or failure, the worker automatically re-routes the task to headless Playwright with stealth scripts enabled.
-* **Clean Shutdown Lifecycle:** Both workers (`tasks.py`) and HTTP engines (`engine.py`) explicitly close connection pools and browser instances upon execution end, preventing dangling browser tabs or socket exhaustion.
+* **Automatic Engine Fallback:** If a fast static fetch (`curl_cffi`) returns an HTTP block or failure, the worker automatically re-routes the task to headless Playwright with stealth scripts ena[...]
+* **Clean Shutdown Lifecycle:** Both workers (`backend.tasks`) and HTTP engines (`backend.engine`) explicitly close connection pools and browser instances upon execution end, preventing dangling browser ta[...]
 
 ---
 
 ## License
 
-This project is open-source and available under the [MIT License](https://www.google.com/search?q=LICENSE).
-
-```
-
-```
+This project is open-source and available under the MIT License.
