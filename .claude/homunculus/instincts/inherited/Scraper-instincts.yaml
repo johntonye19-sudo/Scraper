@@ -1,0 +1,298 @@
+# Instincts generated from https://github.com/johntonye19-sudo/Scraper
+# Generated: 2026-07-28T18:06:24.179Z
+# Version: 2.0
+# NOTE: This file supplements (does not replace) any existing curated instincts.
+# High-confidence manually curated instincts should be preserved alongside these.
+
+---
+id: Scraper-commit-length
+trigger: "when writing a commit message"
+confidence: 0.6
+domain: git
+source: repo-analysis
+source_repo: https://github.com/johntonye19-sudo/Scraper
+---
+
+# Scraper Commit Length
+
+## Action
+
+Write moderate-length commit messages (~67 characters)
+
+## Evidence
+
+- Average commit message length: 67 chars
+- Based on 1 commits
+
+---
+id: Scraper-naming-files
+trigger: "when creating a new file"
+confidence: 0.8
+domain: code-style
+source: repo-analysis
+source_repo: https://github.com/johntonye19-sudo/Scraper
+---
+
+# Scraper Naming Files
+
+## Action
+
+Use camelCase naming convention
+
+## Evidence
+
+- Analyzed file naming patterns in repository
+- Dominant pattern: camelCase
+
+---
+id: Scraper-import-relative
+trigger: "when importing modules"
+confidence: 0.75
+domain: code-style
+source: repo-analysis
+source_repo: https://github.com/johntonye19-sudo/Scraper
+---
+
+# Scraper Import Relative
+
+## Action
+
+Use relative imports for project files
+
+## Evidence
+
+- Import analysis shows relative import pattern
+- Example: import { x } from '../lib/x'
+
+---
+id: Scraper-export-style
+trigger: "when exporting from a module"
+confidence: 0.7
+domain: code-style
+source: repo-analysis
+source_repo: https://github.com/johntonye19-sudo/Scraper
+---
+
+# Scraper Export Style
+
+## Action
+
+Prefer named exports
+
+## Evidence
+
+- Export pattern analysis
+- Dominant style: named
+
+---
+id: Scraper-test-separate
+trigger: "when writing tests"
+confidence: 0.8
+domain: testing
+source: repo-analysis
+source_repo: https://github.com/johntonye19-sudo/Scraper
+---
+
+# Scraper Test Separate
+
+## Action
+
+Place tests in the tests/ or __tests__/ directory, mirroring src structure
+
+## Evidence
+
+- Separate test directory pattern detected
+- Tests live in dedicated test folders
+
+---
+id: scraper-instinct-file-naming-camelcase
+trigger: "When creating a new Python file"
+confidence: 0.8
+domain: code-style
+source: repo-analysis
+source_repo: johntonye19-sudo/Scraper
+---
+
+# Scraper Instinct File Naming Camelcase
+
+## Action
+
+Name the file using camelCase
+
+## Evidence
+
+- Pattern in namingConventions.files: camelCase
+
+---
+id: scraper-instinct-function-naming-camelcase
+trigger: "When defining a new function"
+confidence: 0.8
+domain: code-style
+source: repo-analysis
+source_repo: johntonye19-sudo/Scraper
+---
+
+# Scraper Instinct Function Naming Camelcase
+
+## Action
+
+Name the function using camelCase
+
+## Evidence
+
+- Pattern in namingConventions.functions: camelCase
+
+---
+id: scraper-instinct-class-naming-pascalcase
+trigger: "When defining a new class"
+confidence: 0.8
+domain: code-style
+source: repo-analysis
+source_repo: johntonye19-sudo/Scraper
+---
+
+# Scraper Instinct Class Naming Pascalcase
+
+## Action
+
+Name the class using PascalCase
+
+## Evidence
+
+- Pattern in namingConventions.classes: PascalCase
+
+---
+id: scraper-instinct-constant-naming-screaming-snake
+trigger: "When defining a constant"
+confidence: 0.8
+domain: code-style
+source: repo-analysis
+source_repo: johntonye19-sudo/Scraper
+---
+
+# Scraper Instinct Constant Naming Screaming Snake
+
+## Action
+
+Name the constant using SCREAMING_SNAKE_CASE
+
+## Evidence
+
+- Pattern in namingConventions.constants: SCREAMING_SNAKE_CASE
+
+---
+id: scraper-instinct-import-style-relative
+trigger: "When importing modules within the package"
+confidence: 0.8
+domain: code-style
+source: repo-analysis
+source_repo: johntonye19-sudo/Scraper
+---
+
+# Scraper Instinct Import Style Relative
+
+## Action
+
+Use relative imports
+
+## Evidence
+
+- Pattern in importStyle: relative
+
+---
+id: scraper-instinct-export-style-named
+trigger: "When exporting functions or classes"
+confidence: 0.7
+domain: code-style
+source: repo-analysis
+source_repo: johntonye19-sudo/Scraper
+---
+
+# Scraper Instinct Export Style Named
+
+## Action
+
+Use named exports
+
+## Evidence
+
+- Pattern in exportStyle: named
+
+---
+id: scraper-instinct-test-location-separate
+trigger: "When adding new tests"
+confidence: 0.9
+domain: testing
+source: repo-analysis
+source_repo: johntonye19-sudo/Scraper
+---
+
+# Scraper Instinct Test Location Separate
+
+## Action
+
+Place test files in a separate folder from source code
+
+## Evidence
+
+- Pattern in architecture.folderStructure.testLocation: separate
+
+---
+id: scraper-instinct-commit-format-freeform
+trigger: "When writing a commit message"
+confidence: 0.8
+domain: git
+source: repo-analysis
+source_repo: johntonye19-sudo/Scraper
+---
+
+# Scraper Instinct Commit Format Freeform
+
+## Action
+
+Use a freeform commit message without a required prefix
+
+## Evidence
+
+- Pattern in commits.type: freeform
+- No prefixes in commits.prefixes
+
+---
+id: scraper-instinct-commit-length-medium
+trigger: "When writing a commit message"
+confidence: 0.7
+domain: git
+source: repo-analysis
+source_repo: johntonye19-sudo/Scraper
+---
+
+# Scraper Instinct Commit Length Medium
+
+## Action
+
+Keep the commit message concise, around 67 characters on average
+
+## Evidence
+
+- Pattern in commits.averageLength: 67
+
+---
+id: scraper-instinct-folder-backend-frontend
+trigger: "When organizing new code or modules"
+confidence: 0.9
+domain: architecture
+source: repo-analysis
+source_repo: johntonye19-sudo/Scraper
+---
+
+# Scraper Instinct Folder Backend Frontend
+
+## Action
+
+Place backend-related code in the 'backend' folder and frontend-related code in the 'frontend' folder
+
+## Evidence
+
+- Pattern in architecture.folderStructure.commonFolders: backend, frontend
+- Seen in commit: Move core python modules into backend/ and add frontend placeholder
+
