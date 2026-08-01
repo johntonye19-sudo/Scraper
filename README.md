@@ -1,7 +1,3 @@
-Here is your clean, text-focused `README.md` without the diagram.
-
----
-
 ### `README.md`
 
 ```markdown
